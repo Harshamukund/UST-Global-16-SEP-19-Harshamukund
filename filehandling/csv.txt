@@ -1,0 +1,4 @@
+10,Anushka,100000,F
+11,Abhinav,10000,M
+12,Ramesh,100000,M
+13,Kiran,200000,M
