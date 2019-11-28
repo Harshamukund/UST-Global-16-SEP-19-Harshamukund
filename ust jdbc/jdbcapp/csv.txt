@@ -1,0 +1,4 @@
+16,priya,100000,F
+17,devasena,10000,M
+18,katappa,100000,M
+19,sheela,200000,F
