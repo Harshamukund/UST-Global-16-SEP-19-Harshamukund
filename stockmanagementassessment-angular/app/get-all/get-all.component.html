@@ -1,0 +1,94 @@
+<h4 class="mt-5 mb-5 col-md-4 text-center text-success bg-dark" *ngIf="message">{{message}}</h4>
+<div class="mt-5 mb-5 col-md-4 offset-4 card card-body">
+  <input type="search" name="search" id="search" placeholder="Enter Product or Company or Category Name Search" [(ngModel)]="search" class="form-control">
+</div>
+<div class="col-md-8 offset-9">
+  <button class="btn btn-success" (click)="move()">Add Cart</button>
+</div>
+<table class="table book-class table-bordered table-striped table-dark mt-5 mb-5 col-md-8 offset-2">
+    <thead>
+      <tr>
+        <th scope="col">Products</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Company</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Update</th>
+        <th scope="col">Buy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | search: search; index as i">
+          <td>{{i+1}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.company}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.quantity}}</td>
+          <td><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+            (click)="updateProduct(product)">Edit</button></td>
+            <td><button class="btn btn-success" (click)="addCart(product)">Buy</button></td>    
+      </tr>
+    </tbody>
+   
+  </table>
+  
+
+  <div class="modal" *ngIf="selectedProduct" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Book</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+  
+          <div class="mt-1 card card-body mb-1">
+            <form action="" #form="ngForm" (ngSubmit)="editProduct(form)">
+              <h1 class="text-center bg-dark text-danger">Update Product</h1>
+              <input type="hidden" name="pid" #pid="ngModel" ngModel [(ngModel)]="selectedProduct.pid">
+              <div class="form-group">
+                <input type="text" name="name" id="name" #name="ngModel" placeholder="Enter Product Name" ngModel class="form-control" required>
+                <div *ngIf="name.touched && name.invalid">
+                    <p class="text-danger" *ngIf="name.errors.required">* This Field is Required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="category" id="category" #category="ngModel" placeholder="Enter Category" ngModel class="form-control" required>
+                <div *ngIf="category.touched && category.invalid">
+                    <p class="text-danger" *ngIf="category.errors.required">* This Field is Required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="company" id="company" #company="ngModel" placeholder="Enter Company Name" ngModel class="form-control" required>
+                <div *ngIf="company.touched && company.invalid">
+                    <p class="text-danger" *ngIf="company.errors.required">* This Field is Required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="number" name="quantity" id="quantity" #quantity="ngModel" placeholder="Enter Quantity of Products" ngModel class="form-control" required>
+                <div *ngIf="quantity.touched && quantity.invalid">
+                    <p class="text-danger" *ngIf="quantity.errors.required">* This Field is Required</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="number" name="price" id="price" #price="ngModel" placeholder="Enter price of products" ngModel class="form-control" required>
+                <div *ngIf="price.touched && price.invalid">
+                    <p class="text-danger" *ngIf="price.errors.required">* This Field is Required</p>
+                </div>
+            </div> 
+            <div class="form-group">
+                <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add Product</button>
+            </div>
+     </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

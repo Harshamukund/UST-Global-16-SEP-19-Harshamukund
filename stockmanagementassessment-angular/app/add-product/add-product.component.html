@@ -1,0 +1,40 @@
+<div class="col-md-6 mt-5 offset-3 card card-body">
+    <h4 class="text-center text-success bg-dark" *ngIf="message">{{message}}</h4>
+    <h3 class="text-center text-dark bg-warning"> Add Product</h3>
+    <form action="" #form="ngForm" (ngSubmit)="addProduct(form)">
+        <div class="form-group">
+            <input type="text" name="name" id="name" #name="ngModel" placeholder="Enter Product Name" ngModel class="form-control" required>
+            <div *ngIf="name.touched && name.invalid">
+                <p class="text-danger" *ngIf="name.errors.required">* This Field is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="category" id="category" #category="ngModel" placeholder="Enter Category" ngModel class="form-control" required>
+            <div *ngIf="category.touched && category.invalid">
+                <p class="text-danger" *ngIf="category.errors.required">* This Field is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="company" id="company" #company="ngModel" placeholder="Enter Company Name" ngModel class="form-control" required>
+            <div *ngIf="company.touched && company.invalid">
+                <p class="text-danger" *ngIf="company.errors.required">* This Field is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="number" name="quantity" id="quantity" #quantity="ngModel" placeholder="Enter Quantity of Products" ngModel class="form-control" required>
+            <div *ngIf="quantity.touched && quantity.invalid">
+                <p class="text-danger" *ngIf="quantity.errors.required">* This Field is Required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="number" name="price" id="price" #price="ngModel" placeholder="Enter price of products" ngModel class="form-control" required>
+            <div *ngIf="price.touched && price.invalid">
+                <p class="text-danger" *ngIf="price.errors.required">* This Field is Required</p>
+            </div>
+        </div> 
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-success float-right" [disabled]="form.invalid">Add Product</button>
+        </div>
+
+    </form>
+</div>

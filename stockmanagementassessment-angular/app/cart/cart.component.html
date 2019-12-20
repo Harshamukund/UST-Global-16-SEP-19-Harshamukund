@@ -1,0 +1,24 @@
+<div class="mt-5 col-md-8 offset-9">
+  <button *ngIf="isProducts" class="btn btn-success" (click)="orderProducts()">Generate Bill</button>
+</div>
+<table class="table book-class table-bordered table-striped table-dark mt-5 mb-5 col-md-8 offset-2">
+    <thead>
+      <tr>
+        <th scope="col">Products</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Company</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; index as i">
+          <td>{{i+1}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.category}}</td>
+          <td>{{product.company}}</td>
+          <td>{{product.price}}</td>  
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="col-md-6 offset-4 text-danger float-right" *ngIf="totalAmount">Total Amount :{{totalAmount}}</h5>

@@ -1,0 +1,23 @@
+<div class="col-md-4 offset-4">
+    <h3 class="text-success">Your Ordered Success</h3>
+</div>
+<table class="table book-class table-bordered table-striped table-dark mt-5 mb-5 col-md-8 offset-2">
+    <thead>
+      <tr>
+        <th scope="col">Order</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">GST</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of list; index as i">
+          <td>{{i+1}}</td>
+          <td>{{order.name}}</td>
+          <td>{{order.price}}</td>
+          <td>{{order.price*0.1}}</td>
+          </tr>
+    </tbody>
+  </table>
+  
+  <h5 class="col-md-6 offset-4 text-danger float-right">Total Amount :{{totalAmount}}</h5>
