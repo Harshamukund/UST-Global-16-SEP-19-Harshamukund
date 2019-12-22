@@ -38,7 +38,7 @@
 
 </fieldset>
 <%
-RetailerBean rb=(RetailerBean)request.getAttribute("bean") ;%>
+ProductBean rb=(ProductBean)request.getAttribute("bean") ;%>
 
 <%
 if(rb!=null){
@@ -49,8 +49,8 @@ if(rb!=null){
 		<th>RetailerEmail</th>
 					</tr>
 	<tr>
-		<td><%=rb.getRetailername()%></td>
-		<td><%=rb.getEmail() %></td>
+		<td><%=rb.getOrderid()%></td>
+		<td><%=rb.getProductname() %></td>
 			
 	</tr>
 	

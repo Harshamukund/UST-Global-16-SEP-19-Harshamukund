@@ -81,8 +81,8 @@ public String home() {
 	return "home";
 }
 	@GetMapping("/search")
-	public String search(@RequestParam("orderid")int id,ModelMap map) {
-		ProductBean bean=service.searchProduct(id);
+	public String search(@RequestParam("orderid")int orderid,ModelMap map) {
+		ProductBean bean=service.searchProduct(orderid);
 		
 		if(bean==null) {
 			map.addAttribute("msg","Data not found");
