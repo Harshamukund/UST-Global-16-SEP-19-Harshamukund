@@ -1,0 +1,20 @@
+.mtop{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    padding: 5px;
+    color: blue;
+}
+
+
+#bg {
+    background: -webkit-linear-gradient(right, #1e1c35, #1e1c35); 
+}
+.bg {
+    
+    background-image: url("https://cdn.pixabay.com/photo/2013/07/12/12/55/envelope-146555__340.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

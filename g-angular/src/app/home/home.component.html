@@ -1,0 +1,143 @@
+<div>
+    <!-- <h2 align="center" *ngFor="let s of studentBeans"> Welcome {{s.sname}} </h2>  -->
+
+    <!-- <h2 align="center"> Welcome {{studentBeans[0].sname}} </h2>  -->
+    <h2 align="center"> Welcome {{ value }} </h2> 
+</div>
+
+<div class="card card-body" >
+   
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-4 offset-4 mt-5">
+    <input class="form-control " name="search" id="search" type="text" placeholder="Enter email" aria-label="Search" [(ngModel)]='search'>
+    <br>
+  </div>
+  <div style="background:gainsboro">
+    <div class="card  text-black">
+      <div class="card-img-overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+  
+              <div class="container ">
+                <table class="table table-bordered mt-2 table-hover " style="border-style: solid; border-width: 1px;">
+                  <thead>
+                    <tr class="text-center text-dark">
+                      <th> ID</th>
+                      <th>from</th>
+                      <th>subject</th>
+                      <th>Author2</th>
+                      <th>Publisher</th>
+                      <th>Year Of Publication</th>
+                      <th>Delete</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let email of emails">
+                      <td>{{email.id}}</td>
+                      <td>{{email.userbean.email}}</td>
+                      <td>{{email.subject}}</td>
+                      <td>{{book.author2}}</td>
+                      <td>{{book.publisher}}</td>
+                      <td>{{book.yearOfPublication}}</td>
+     
+                      <td>
+                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"
+                          (click)="selectedEmail(email)">
+                          Edit
+                        </button>
+  
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" 
+                          aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document"  *ngIf="selectEmail">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+  
+                              <form class="col-md-10 offset-1 mt-5 card card-body" #form="ngForm"
+                                (ngSubmit)="deletemail(form)">
+                                <h1 class="text-center bg-white text-dark">Mail Details</h1>
+                                <div class="form-group">
+                                  <input type="disabled" name="id" id="id" class="form-control"
+                                    placeholder="Enter Book Name" #id="ngModel" ngModel required
+                                    [(ngModel)]="selectEmail.id">
+                                  <div *ngIf="bookName.touched && bookName.invalid">
+                                    <p class="alert alert-danger" *ngIf="bookName.errors.required">*This field is required
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="subject" id="subject" class="form-control"
+                                    placeholder="Enter Author2" #subject="ngModel" ngModel required
+                                    [(ngModel)]="selectEmail.subject">
+                                  <div *ngIf="author2.touched && author2.invalid">
+                                    <p class="alert alert-danger" *ngIf="author2.errors.required">*This field is required
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <input type="text" name="from" id="from" class="form-control"
+                                    placeholder="Enter Author1" #from="ngModel" ngModel required
+                                    [(ngModel)]="selectEmail.userbean.email">
+                                  <div *ngIf="author1.touched && author1.invalid">
+                                    <p class="alert alert-danger" *ngIf="author1.errors.required">*This field is required
+                                    </p>
+                                  </div>
+                                </div>
+                               
+                                <div class="form-group">
+                               
+                                    <textarea  type="text" name="message" id="message" class="form-control"
+                                    placeholder="Enter Publisher" #message="ngModel" ngModel required
+                                    [(ngModel)]="selectedEmail.message"></textarea>
+                                 
+                                </div>
+                               
+  
+                                <div class="form-group">
+                                  <button type="submit" class="btn btn-outline-dark float-righ" >delete</button>
+                                </div>
+                              </form>
+  
+                            </div>
+                          </div>
+                        </div>
+  
+  
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

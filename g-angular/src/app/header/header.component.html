@@ -1,0 +1,127 @@
+<div class="bg">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top " id="bg">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand text-light" routerLink="home">GMAIL</a>
+      <ul class="float-right" class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <!-- <li class="nav-item active" *ngIf="isLogout()">
+          <a class="nav-link text-light" (click)="home()">Home <span class="sr-only"></span></a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/viewstudents">view students</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" > librarian</a>
+        </li> -->
+      </ul>
+      <ul  class="float-right navbar-nav  mt-2 mt-lg-0">
+        <li class="nav-item" >
+          <a class="nav-link text-light" routerLink="/changepassword">change password</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link text-light"  routerLink="/login">login</a>
+        </li>
+        <!-- <li class="nav-item" *ngIf="isLogout()">
+          <a class="nav-link text-light"  routerLink="/logout" (click)="logout()"> logout</a>
+        </li> -->
+      </ul>
+  
+      
+    </div>
+  </nav>
+
+
+
+<!-- vertical navbar -->
+
+
+
+
+
+
+<div class="col-md-43mt-2 float-left card card-body">
+  <!-- <nav class="  navbar   navbar-light bg-light">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">-->
+      <ul class="nav flex-column">
+        <li class="nav-item"> 
+
+          <a class="nav-link active mtop" data-toggle="modal" data-target="#modelId"><i class="fa fa-envelope-o"
+              aria-hidden="true"></i> Compose</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active mtop" routerLink="/inbox"><i class="fa fa-inbox" aria-hidden="true"></i> Inbox</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active mtop" routerLink="/sentmail"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+            SentEmails</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active mtop" routerLink="/trash"><i class="fa fa-trash" aria-hidden="true"></i> Trash</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active mtop" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</a>
+        </li>
+      </ul>
+    <!-- </div>
+  </nav> -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Compose Mail</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="container-fluid">
+                    Compose mail
+                </div> -->
+      <form   #form="ngForm" (ngSubmit)="composeMail(form)" method="POST">
+       
+        <div class="form-group">
+
+          <input type="text" class="form-control" id="email" name="email" #email="ngModel"  ngModel placeholder="To:"><br>
+          <div *ngIf=" email.touched && email.invalid">
+            <div *ngIf='name.errors.required' class="text-danger">*Email Required</div>
+            <input pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required />
+          </div>
+
+          <div class="form-group">
+          <input type="text" class="form-control" id="subject" name="subject" #subject="ngModel"  ngModel placeholder="subject"><br>
+            <div class="form-group">
+              <textarea rows="4" cols="50" type="message " class="form-control" id="message" name="message"
+               #message="ngModel" ngModel placeholder="text here"></textarea>
+              <div *ngIf=" name.touched && name.invalid">
+                <p *ngIf='name.errors.required' class="text-danger">*cannot send blank message</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Send</button>
+            <button type="button" (click)="draft(form)" class="btn btn-outline-dark float-left" [disabled]="form.invalid">cancel</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+    <script>
+      $('#exampleModal').on('show.bs.modal', event => {
+        var button = $(event.relatedTarget);
+        var modal = $(this);
+        // Use above variables to manipulate the DOM
+
+      });
+    </script>
+    </div>
